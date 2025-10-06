@@ -1,44 +1,44 @@
-# name: CryptoGuard V1.0 GitHub OIDC Deploy
+name: CryptoGuard V1.0 GitHub OIDC Deploy
 
-# on:
-#   push:
-#     branches: [main]
+on:
+  push:
+    branches: [main]
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       id-token: write # Required for GitHub OIDC token
-#       contents: read
-#       actions: read
-#       attestations: write
-#     steps:
-#       - uses: actions/checkout@v4
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for GitHub OIDC token
+      contents: read
+      actions: read
+      attestations: write
+    steps:
+      - uses: actions/checkout@v4
 
-#       # Install dependencies
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: "20"
-#           cache: "npm"
+      # Install dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-#       - name: Install dependencies
-#         run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-#       # Build your application
-#       - name: Build
-#         run: npm run build
+      # Build your application
+      - name: Build
+        run: npm run build
 
-#       # CryptoGuard V1.0 GitHub OIDC Deployment (with multi-format key support)
-#       - name: CryptoGuard Deploy
-#         uses: CommandOSSLabs/cryptoguard-action@v0.2.4
-#         with:
-#           domain: cryptoguard-action-test-vite.vercel.app
-#           debug: true
-#           build-dir: ./dist
-#           network: testnet # or mainnet for production
-#         env:
-#           # Domain verification hash from CLI registration
-#           CRYPTOGUARD_DOMAIN_HASH: ${{ secrets.CRYPTOGUARD_DOMAIN_HASH }}
-#           # Private key for signature authentication
-#           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      # CryptoGuard V1.0 GitHub OIDC Deployment (with multi-format key support)
+      - name: CryptoGuard Deploy
+        uses: CommandOSSLabs/cryptoguard-action@v0.2.4
+        with:
+          domain: cryptoguard-action-test-vite.vercel.app
+          debug: true
+          build-dir: ./dist
+          network: testnet # or mainnet for production
+        env:
+          # Domain verification hash from CLI registration
+          CRYPTOGUARD_DOMAIN_HASH: ${{ secrets.CRYPTOGUARD_DOMAIN_HASH }}
+          # Private key for signature authentication
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
