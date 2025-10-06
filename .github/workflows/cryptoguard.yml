@@ -33,7 +33,7 @@ jobs:
       - name: CryptoGuard Deploy
         uses: CommandOSSLabs/cryptoguard-action@v0.2.4
         with:
-          domain: cryptoguard-action-test-vite.vercel.app
+          domain: vite-cryptoguard.vercel.app
           debug: true
           build-dir: ./dist
           network: testnet # or mainnet for production
