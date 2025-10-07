@@ -31,7 +31,7 @@ jobs:
 
       # CryptoGuard V1.0 GitHub OIDC Deployment (with multi-format key support)
       - name: CryptoGuard Deploy
-        uses: CommandOSSLabs/cryptoguard-action@v0.2.4
+        uses: CommandOSSLabs/cryptoguard-action@v0.2.6
         with:
           domain: vite-cryptoguard.vercel.app
           debug: true
